@@ -4,9 +4,9 @@ FROM docker.io/ibmcom/informix-developer-database:latest
 
   USER root
 #Install deps tools
-  RUN mv /etc/yum.repos.d/centos.repo /etc/yum.repos.d/centos.repo.old
-  RUN microdnf install -y yum
-  RUN yum clean all; yum install -y net-tools gcc make
+#  RUN mv /etc/yum.repos.d/centos.repo /etc/yum.repos.d/centos.repo.old
+#  RUN microdnf install -y yum
+#  RUN yum clean all; yum install -y net-tools gcc make
 
 #Make Infomix a sudoer
   RUN echo 'informix ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
