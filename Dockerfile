@@ -10,7 +10,7 @@ FROM docker.io/ibmcom/informix-developer-database:latest
 
 #Make Infomix a sudoer
   RUN echo 'informix ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
-  RUN chmod a+rwX /home/informix
+  RUN chmod -R a+rwX /home/informix /opt/ibm
 
 #Install myexport
 #  RUN cd /home/informix
