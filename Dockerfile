@@ -3,7 +3,7 @@
 FROM docker.io/ibmcom/informix-developer-database:latest
 
 #Capture the pods UID and GID
-  RUN echo "export MYUID=$(id -u)" > /tmp/envfile; RUN echo "export MYGID=$(id -g)" >> /tmp/envfile
+  RUN echo "export MYUID=$(id -u)" > /tmp/envfile; echo "export MYGID=$(id -g)" >> /tmp/envfile
 
   USER root
 #Install deps tools
