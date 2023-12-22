@@ -27,4 +27,5 @@ sleep 1
 # DO a Level 0 Archive
 ontape -s -L 0
 sleep 1
+chmod -R 777 /opt/ibm
 echo "BFS Post Init Script Stop"
