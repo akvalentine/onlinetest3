@@ -11,7 +11,7 @@ FROM docker.io/ibmcom/informix-developer-database:latest
 #Make Infomix a sudoer
   RUN echo 'informix ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
   RUN chmod -R a+rwX /home/informix /opt/ibm
-
+  
 #Install myexport
 #  RUN cd /home/informix
 #  RUN pwd
@@ -58,6 +58,7 @@ FROM docker.io/ibmcom/informix-developer-database:latest
   ENV SIZE small
   ENV RUN_FILE_POST_INIT bfs_init_extspaces.sh 
   # End Custom
+  RUN chmod -R 777 /home/informix /opt/ibm
   WORKDIR /home/informix
 
   # start informix, and KEEP PROCESS RUNNING
