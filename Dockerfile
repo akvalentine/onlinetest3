@@ -3,8 +3,7 @@
 FROM docker.io/ibmcom/informix-developer-database:latest
 
 #Capture the pods UID and GID
-ARG MYUID=$(id -u)
-ARG MYGID=$(id -g)
+  RUN echo "export MYUID=$(id -u)" > /tmp/envfile; RUN echo "export MYGID=$(id -g)" >> /tmp/envfile
 
   USER root
 #Install deps tools
@@ -13,7 +12,7 @@ ARG MYGID=$(id -g)
 #  RUN yum clean all; yum install -y net-tools gcc make
 
 #Make Infomix a sudoer
-  RUN useradd -o -ms /bin/bash informix -u $MYUID -g $MYGID
+  RUN . /tmp/envfile; useradd -o -ms /bin/bash informix -u $MYUID -g $MYGID
   RUN echo 'informix ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
   RUN chmod -R a+rwX /home/informix /opt/ibm
   
