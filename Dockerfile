@@ -2,6 +2,10 @@
 
 FROM docker.io/ibmcom/informix-developer-database:latest
 
+#Capture the pods UID and GID
+ARG MYUID=$(id -u)
+ARG MYGID=$(id -g)
+
   USER root
 #Install deps tools
 #  RUN mv /etc/yum.repos.d/centos.repo /etc/yum.repos.d/centos.repo.old
@@ -9,6 +13,7 @@ FROM docker.io/ibmcom/informix-developer-database:latest
 #  RUN yum clean all; yum install -y net-tools gcc make
 
 #Make Infomix a sudoer
+  RUN useradd -o -ms /bin/bash informix -u $MYUID -g $MYGID
   RUN echo 'informix ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
   RUN chmod -R a+rwX /home/informix /opt/ibm
   
