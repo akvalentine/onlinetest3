@@ -1,6 +1,7 @@
 # Infromix enviroment for testing
 
-FROM docker.io/ibmcom/informix-developer-database:latest
+#FROM docker.io/ibmcom/informix-developer-database:latest
+FROM icr.io/informix/informix-developer-database:latest
 
 #Capture the pods UID and GID
   RUN echo "export MYUID=$(id -u)" > /tmp/envfile; echo "export MYGID=$(id -g)" >> /tmp/envfile
