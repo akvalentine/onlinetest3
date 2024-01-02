@@ -13,7 +13,7 @@ FROM docker.io/ibmcom/informix-developer-database:latest
 
 #Make Infomix a sudoer
   RUN . /tmp/envfile; sed -i "s/:200:200:/:${MYUID}:${MYGID}:/" /etc/passwd; sed -i "s/:200:/:${MYGID}:/" /etc/group
-  RUN find / -uid 200 -exec chown informix.informix {} \;
+  RUN find /home /opt -uid 200 -exec chown informix.informix {} \;
   RUN echo 'informix ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
   RUN chmod -R a+rwX /home/informix /opt/ibm
   
