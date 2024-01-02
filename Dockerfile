@@ -4,7 +4,7 @@
 FROM icr.io/informix/informix-developer-database:latest
 
 #Capture the pods UID and GID
-  RUN echo "export MYUID=$(id -u)" > /tmp/envfile; echo "export MYGID=$(id -g)" >> /tmp/envfile
+  #RUN echo "export MYUID=$(id -u)" > /tmp/envfile; echo "export MYGID=$(id -g)" >> /tmp/envfile
 
   USER root
 #Install deps tools
@@ -13,8 +13,8 @@ FROM icr.io/informix/informix-developer-database:latest
 #  RUN yum clean all; yum install -y net-tools gcc make
 
 #Make Infomix a sudoer
-  RUN . /tmp/envfile; sed -i "s/:200:200:/:${MYUID}:${MYGID}:/" /etc/passwd; sed -i "s/:200:/:${MYGID}:/" /etc/group
-  RUN find /home /opt -uid 200 -exec chown informix.informix {} \;
+  #RUN . /tmp/envfile; sed -i "s/:200:200:/:${MYUID}:${MYGID}:/" /etc/passwd; sed -i "s/:200:/:${MYGID}:/" /etc/group
+  #RUN find /home /opt -uid 200 -exec chown informix.informix {} \;
   RUN echo 'informix ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
   RUN chmod -R a+rwX /home/informix /opt/ibm
   
