@@ -15,7 +15,7 @@ FROM docker.io/ibmcom/informix-developer-database:latest
   RUN . /tmp/envfile; sed -i "s/:200:200:/:${MYUID}:${MYGID}:/" /etc/passwd; sed -i "s/:200:/:${MYGID}:/" /etc/group
   RUN find /home /opt -uid 200 -exec chown informix.informix {} \;
   RUN echo 'informix ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
-  RUN chmod -R a+rwX /home/informix /opt/ibm
+  #RUN chmod -R a+rwX /home/informix /opt/ibm
   
 #Install myexport
 #  RUN cd /home/informix
