@@ -14,10 +14,10 @@ echo "BFS Post Init Script Start"
 sleep 1
 #Touch the new DB Space Files
 touch  ${BFSSPACEDIR}/${DS_FMSSP}
-chmod 660 ${BFSSPACEDIR}/${DS_FMSSP}
+chmod 666 ${BFSSPACEDIR}/${DS_FMSSP}
 
 touch  ${BFSSPACEDIR}/${DS_BATSP}
-chmod 660 ${BFSSPACEDIR}/${DS_BATSP}
+chmod 666 ${BFSSPACEDIR}/${DS_BATSP}
 
 #Init additional spaces into the DB
 sleep 1
