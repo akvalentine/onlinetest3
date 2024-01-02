@@ -12,7 +12,8 @@ FROM docker.io/ibmcom/informix-developer-database:latest
 #  RUN yum clean all; yum install -y net-tools gcc make
 
 #Make Infomix a sudoer
-  RUN . /tmp/envfile; useradd -o -ms /bin/bash informix -u $MYUID -g $MYGID
+  RUN . /tmp/envfile; sed -i "s/:200:200:/:${MYUID}:${MYGID}:/" /etc/passwd; sed -i "s/:200:/:${MYGID}:/" /etc/group
+  RUN find / -uid 200 -exec chown informix.informix {} \;
   RUN echo 'informix ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
   RUN chmod -R a+rwX /home/informix /opt/ibm
   
